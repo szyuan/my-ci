@@ -1,0 +1,34 @@
+project: create-fairytales-server
+
+# 测试环境
+sit:
+  script:
+    - export PATH="/data/node16/bin:$PATH"
+    - wnpm ci
+    - wnpm run build:$ENV
+  variables:
+    ENV: "test" #根据项目实际情况设置ENV的值
+  only:
+    - /^test_.*/ #test_*分支都执行sit打包部署
+
+# 测试环境-备用（多版本同时测试时使用)
+sit-minor:
+  script:
+    - export PATH="/data/node16/bin:$PATH"
+    - wnpm ci
+    - wnpm run build:$ENV
+  variables:
+    ENV: "test"
+  only:
+    - /^minor_test_.*/ 
+    
+# release环境
+release:
+  script:
+    - export PATH="/data/node16/bin:$PATH"
+    - wnpm i
+    - wnpm run build:$ENV
+  variables:
+    ENV: "prod" #根据项目实际情况设置ENV的值
+  only:
+    - /^release.*/
