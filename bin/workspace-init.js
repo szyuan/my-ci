@@ -4,10 +4,18 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const yaml = require('js-yaml');
+const arg = require('arg');
 
 const userHomeDir = os.homedir();
 const dataDir = '.my-ci';
 const configFileName = '.my-ci.yml'
+
+const args = arg({
+	// Types
+	'--force': Boolean,
+	// Aliases
+	'-F': '--force',
+});
 
 // 获取当前项目的根目录路径
 const projectRootPath = path.resolve();
@@ -21,13 +29,13 @@ try {
 
   if (ymlConfig.project) {
     projectName = ymlConfig.project
-    newWorkspace(projectName);
+    newWorkspace(projectName, args['--force']);
   } else {
     throw 'project属性不能为空';
   }
 } catch (err) {
   if (err?.code === 'EEXIST') {
-    console.error(`${projectName}已存在，请在yml配置中设置一个不重复的project属性`);
+    console.error(`${projectName}已存在，请在yml配置中设置一个不重复的project属性，或者使用-F覆盖`);
   } else if (err?.code === 'ENOENT') {
     console.error(`没有找到配置文件: ${configFileName}`);
   } else {
@@ -35,7 +43,7 @@ try {
   }
 }
 
-function newWorkspace(projectName) {
+function newWorkspace(projectName, force) {
   // .my-ci文件夹不存在则先创建
   try {
     fs.mkdirSync(path.resolve(userHomeDir, dataDir));
@@ -50,7 +58,19 @@ function newWorkspace(projectName) {
 
   // workspace初始化
   const wsInfoPath = path.resolve(os.homedir(), dataDir, projectName);
-  fs.openSync(wsInfoPath, 'wx'); // 如果文件已经存在，会抛出错误
+
+  try {
+    fs.openSync(wsInfoPath, 'wx'); // 如果文件已经存在，会抛出错误
+  } catch (e) {
+    if (e?.code === 'EEXIST') {
+      if (force) {
+        fs.unlinkSync(wsInfoPath);
+        console.log('删除已有work信息');
+      } else {
+        throw e;
+      }
+    }
+  }
   fs.writeFileSync(wsInfoPath, `PATH=${projectRootPath}`);
   console.log('my-ci project created successfully.');
 }

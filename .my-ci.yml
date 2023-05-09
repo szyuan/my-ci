@@ -1,11 +1,11 @@
-project: create-fairytales-server
+project: test
 
 # 测试环境
 sit:
   script:
-    - export PATH="/data/node16/bin:$PATH"
-    - wnpm ci
-    - wnpm run build:$ENV
+    - echo "123"
+    - echo "hahaha"
+    - echo "哈哈哈"
   variables:
     ENV: "test" #根据项目实际情况设置ENV的值
   only:
@@ -15,8 +15,8 @@ sit:
 sit-minor:
   script:
     - export PATH="/data/node16/bin:$PATH"
-    - wnpm ci
-    - wnpm run build:$ENV
+    - npm ci
+    - npm run build:$ENV
   variables:
     ENV: "test"
   only:
@@ -26,8 +26,8 @@ sit-minor:
 release:
   script:
     - export PATH="/data/node16/bin:$PATH"
-    - wnpm i
-    - wnpm run build:$ENV
+    - npm i
+    - npm run build:$ENV
   variables:
     ENV: "prod" #根据项目实际情况设置ENV的值
   only:
