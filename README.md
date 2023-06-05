@@ -16,7 +16,8 @@ npm i -g my-ci
 
 **1. Create a .my-ci.yml configuration file in your local project and commit it to Git.**
 
-[.my-ci.yml](./.my-ci.yml)
+示例：[.my-ci.yml](./.my-ci.yml)，
+可简单兼容[gitlab-ci配置](https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html)
 
 ```yaml
 project: project-z

@@ -1,6 +1,6 @@
 {
   "name": "my-ci",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -11,14 +11,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/szyuan/easy-ci.git"
+    "url": "git+https://github.com/szyuan/my-ci.git"
   },
-  "author": "",
+  "author": "szy",
   "license": "ISC",
+  "keywords": [
+    "ci",
+    "gitlab-ci"
+  ],
   "bugs": {
-    "url": "https://github.com/szyuan/easy-ci/issues"
+    "url": "https://github.com/szyuan/my-ci/issues"
   },
-  "homepage": "https://github.com/szyuan/easy-ci#readme",
+  "homepage": "https://github.com/szyuan/my-ci#readme",
   "dependencies": {
     "@koa/cors": "^4.0.0",
     "arg": "^5.0.2",
