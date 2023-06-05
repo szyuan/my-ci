@@ -16,7 +16,7 @@ npm i -g my-ci
 
 **1. Create a .my-ci.yml configuration file in your local project and commit it to Git.**
 
-![.my-ci.yml](./.my-ci.yml)
+[.my-ci.yml](./.my-ci.yml)
 
 ```yaml
 project: project-z
