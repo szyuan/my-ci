@@ -1,12 +1,13 @@
 {
   "name": "my-ci",
-  "version": "1.0.14",
+  "version": "1.1.5",
   "description": "",
   "main": "index.js",
   "bin": {
-    "my-ci": "./bin/workspace-init.js",
-    "my-ci-start": "./bin/app-start.sh",
-    "my-ci-stop": "./bin/app-stop.sh"
+    "my-ci-init": "./bin/workspace-init.js",
+    "my-ci-app": "./bin/app-start.js",
+    "my-ci-stop": "./bin/app-stop.js",
+    "my-ci": "./bin/my-ci.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,11 +25,14 @@
   "dependencies": {
     "@koa/cors": "^4.0.0",
     "arg": "^5.0.2",
+    "fs-extra": "^11.1.1",
     "ini": "^4.1.0",
     "js-yaml": "^4.1.0",
     "koa": "^2.14.2",
     "koa-bodyparser": "^4.4.0",
     "koa-router": "^12.0.0",
+    "koa-static": "^5.0.0",
+    "nodemon": "^2.0.22",
     "shelljs": "^0.8.5"
   }
 }

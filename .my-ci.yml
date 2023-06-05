@@ -1,34 +1,19 @@
-project: test
+project: my-ci-example
 
 # 测试环境
 sit:
   script:
-    - echo "123"
-    - echo "hahaha"
-    - echo "哈哈哈"
-  variables:
-    ENV: "test" #根据项目实际情况设置ENV的值
+    - echo "Hello"
+    - npm install
   only:
-    - /^test_.*/ #test_*分支都执行sit打包部署
+    # 匹配分支的正则
+    - /^test_.*/ #test_*分支更新时执行上面的script
 
-# 测试环境-备用（多版本同时测试时使用)
-sit-minor:
-  script:
-    - export PATH="/data/node16/bin:$PATH"
-    - npm ci
-    - npm run build:$ENV
-  variables:
-    ENV: "test"
-  only:
-    - /^minor_test_.*/ 
-    
 # release环境
 release:
   script:
     - export PATH="/data/node16/bin:$PATH"
     - npm i
-    - npm run build:$ENV
-  variables:
-    ENV: "prod" #根据项目实际情况设置ENV的值
+    - npm run build
   only:
     - /^release.*/

@@ -15,7 +15,7 @@ function appDataPath(sub = '') {
     return path.resolve(userHomeDir, dataDir, sub);
 }
 function appLogPath(sub = '') {
-    return path.resolve(userHomeDir, logDir, sub);
+    return path.resolve(userHomeDir, dataDir, logDir, sub);
 }
 
 function readWorkYML(workName) {

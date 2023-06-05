@@ -51,8 +51,9 @@ function matchedJob(workName, ref) {
             // 用slice删掉前后两个斜杠（为了和gitlab-ci.yml保持兼容)
             onlyStr = onlyStr.slice(1, -1);
             let onlyReg = new RegExp(onlyStr);
+            let branchName = ref.replace('refs/heads/', '');
             console.log(onlyReg, ref);
-            return onlyReg.test(ref);
+            return onlyReg.test(branchName);
         }
     })
     return matchedJobArr[0];
