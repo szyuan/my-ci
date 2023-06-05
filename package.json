@@ -1,13 +1,10 @@
 {
   "name": "my-ci",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
   "bin": {
-    "my-ci-init": "./bin/workspace-init.js",
-    "my-ci-app": "./bin/app-start.js",
-    "my-ci-stop": "./bin/app-stop.js",
-    "my-ci": "./bin/my-ci.js"
+    "myci": "./bin/myci.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -32,7 +29,6 @@
     "koa-bodyparser": "^4.4.0",
     "koa-router": "^12.0.0",
     "koa-static": "^5.0.0",
-    "nodemon": "^2.0.22",
     "shelljs": "^0.8.5"
   }
 }

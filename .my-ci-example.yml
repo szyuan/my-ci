@@ -1,0 +1,16 @@
+#项目名
+project: my-ci-project
+#场景名(dev,sit,foo,bar...)
+dev-1:
+  script:
+    # 执行的脚本
+    - echo "Hello"
+    - npm install
+  only:
+    # test_开头的任意分支更新时执行上面的script
+    - /^test_.*/ 
+foo:
+  script:
+    - echo "Foo"
+  only: 
+    - /^foo_.*/
